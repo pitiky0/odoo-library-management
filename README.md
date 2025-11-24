@@ -102,9 +102,12 @@ git clone https://github.com/pitiky0/odoo-library-management.git
 sudo systemctl restart odoo18.service
 ```
 **4. Activate:**
-Go to **Apps → Update App List.**
-Search for **"Library Management".**
-Click **Activate.**
+
+- Go to **Apps → Update App List.**
+
+- Search for **"Library Management".**
+
+- Click **Activate.**
 
 ### 👨‍💻 Author
 **Ayoub Karret** Odoo Developer
