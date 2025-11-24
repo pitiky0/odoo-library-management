@@ -7,7 +7,7 @@
                 
                 <a href="#" 
                    class="fa fa-star"
-                   t-att-class="star <= props.record.data[props.name] ? 'text-warning' : 'text-muted'"
+                   t-att-class="star &lt;= props.record.data[props.name] ? 'text-warning' : 'text-muted'"
                    t-on-click="() => this.setRating(star)"
                    aria-label="Rate this book"
                    title="Rate this book">

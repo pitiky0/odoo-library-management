@@ -14,6 +14,8 @@
                 <sheet>
                     <group>
                         <field name="name"/>
+                        <field name="birthDate"/>
+                        <field name="country"/>                        
                         <field name="book_count"/>
                     </group>
                     <notebook>
@@ -21,13 +23,32 @@
                             <field name="book_ids">
                                 <list>
                                     <field name="name"/>
+                                    <field name="author_id"/>
                                     <field name="year"/>
+                                    <field name="isbn"/>
+                                    <field name="numberOfPages"/>
+                                    <field name="genre"/>
+                                    <field name="rating" widget="star_rating"/>
+                                    <field name="state"/> 
                                 </list>
                             </field>
                         </page>
                     </notebook>
                 </sheet>
             </form>
+        </field>
+    </record>
+
+    <record id="view_library_author_list" model="ir.ui.view">
+        <field name="name">library.author.list</field>
+        <field name="model">library.author</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="birthDate"/>
+                <field name="country"/>                
+                <field name="book_count"/>
+            </list>
         </field>
     </record>
 

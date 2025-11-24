@@ -11,6 +11,8 @@ class LibraryBook(models.Model):
     name = fields.Char(string='Title', required=True)
     year = fields.Integer(string='Year')
     isbn = fields.Char(string='ISBN')
+    numberOfPages = fields.Integer(string='Number of Pages')
+    genre = fields.Char(string='Genre')
     active = fields.Boolean(default=True)
     state = fields.Selection([
         ('available', 'Available'),

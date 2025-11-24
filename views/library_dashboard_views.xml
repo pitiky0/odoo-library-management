@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="view_library_statistics_tree" model="ir.ui.view">
-        <field name="name">library.book.statistics.tree</field>
+    <record id="view_library_statistics_list" model="ir.ui.view">
+        <field name="name">library.book.statistics.list</field>
         <field name="model">library.book.statistics</field>
         <field name="arch" type="xml">
-            <tree create="false" edit="false" delete="false">
+            <list create="false" edit="false" delete="false">
                 <field name="author_id"/>
                 <field name="book_count"/>
-                <field name="average_rating" widget="progressbar"/>
-            </tree>
+                <field name="average_rating"/>
+            </list>
         </field>
     </record>
 
@@ -27,7 +27,7 @@
     <record id="action_library_statistics" model="ir.actions.act_window">
         <field name="name">Statistics</field>
         <field name="res_model">library.book.statistics</field>
-        <field name="view_mode">tree,graph</field>
+        <field name="view_mode">list,graph</field>
     </record>
 
     <menuitem id="menu_library_statistics"

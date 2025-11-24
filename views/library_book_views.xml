@@ -9,6 +9,10 @@
                 <field name="author_id"/>
                 <field name="year"/>
                 <field name="isbn"/>
+                <field name="numberOfPages"/>
+                <field name="genre"/>
+                <field name="rating" widget="star_rating"/>
+                <field name="state"/>                
             </list>
         </field>
     </record>
@@ -32,9 +36,11 @@
                             <field name="name"/>
                             <field name="author_id"/>
                             <field name="year"/>
-                        </group>
+                            <field name="numberOfPages"/>
+                        </group>           
                         <group>
                             <field name="isbn"/>
+                            <field name="genre"/>   
                             <field name="active"/>
                             <field name="rating" widget="star_rating"/>
                         </group>

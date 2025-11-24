@@ -5,6 +5,8 @@ class LibraryAuthor(models.Model):
     _description = 'Library Author'
 
     name = fields.Char(string='Name', required=True)
+    birthDate = fields.Date(string='Birth Date')
+    country = fields.Char(string='Country')
     
     # العلاقة العكسية مع الكتب
     book_ids = fields.One2many(
