@@ -1,51 +1,110 @@
 # 📚 Odoo Library Management System
 
-A comprehensive, full-stack Odoo module designed to manage modern library operations. This project demonstrates advanced Odoo development capabilities, ranging from core data modeling to API integrations and frontend customization using the OWL framework.
+![Odoo Version](https://img.shields.io/badge/Odoo-18.0-purple?style=for-the-badge&logo=odoo)
+![License](https://img.shields.io/badge/License-LGPL--3-blue?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Maintained-green?style=for-the-badge)
 
-**Compatible with:** 18.0
-
----
-
-## 🚀 Technical Features
-
-This module was built following strict Odoo best practices and covers the following technical areas:
-
-### 🔹 1. Core Architecture & Backend
-- **Advanced Data Modeling:** Implemented complex relationships (`One2many`, `Many2one`) between Books and Authors.
-- **Inheritance:** Extended the standard `res.partner` model to include library member details without altering core files.
-- **Computed Fields:** Automated logic for tracking book counts and statuses using `@api.depends`.
-- **Access Rights (ACL):** Granular security implementation with distinct roles for `Librarians` (Full Access) and `Users` (Read-only).
-
-### 🔹 2. Business Logic & Automation
-- **Wizards (Transient Models):** Created a "Rent Book" popup wizard to handle lending logic and date tracking seamlessly.
-- **Cron Jobs (Automation):** Automated daily scheduled actions to check for overdue books and log alerts.
-- **Smart Buttons & Active Archive:** Implemented UX best practices for record management.
-
-### 🔹 3. Reporting & Analytics
-- **QWeb PDF Reports:** Professional, printable PDF catalogue for selected books using custom layouts.
-- **SQL Views & Dashboards:** Bypassed the ORM for high-performance reporting, using direct SQL queries to generate a statistics dashboard (Book count per author, Average ratings).
-
-### 🔹 4. Connectivity & Frontend
-- **REST API Integration:** Developed a custom `Controller` exposing a JSON endpoint (`/library/books`) for external mobile/web app integration.
-- **OWL Framework (JS):** Built a custom **Star Rating Widget** from scratch using Odoo's modern JavaScript framework to enhance the UI.
+A comprehensive, **full-stack Odoo 18 module** designed to manage modern library operations. This project serves as an advanced technical demonstration of Odoo development, bridging the gap between backend logic, database optimization, and modern frontend customization using the **OWL framework**.
 
 ---
-
-## 🛠️ Installation & Usage
-
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/pitiky0/odoo-library-management.git](https://github.com/pitiky0/odoo-library-management.git)
-    ```
-
-2. **Add to Odoo addons path:** Move the folder to your `custom_addons` directory.
-
-3. **Install:**
-    - Update App List.
-    - Search for "Library Management".
-    - Click **Activate.**
 
 ## 📸 Screenshots
 
-👨‍💻 Author
-Ayoub Karret Odoo Developer
+| **Dashboard (SQL View)** | **Rent Wizard** |
+|:---:|:---:|
+| ![Dashboard](https://placehold.co/600x400) | ![Wizard](https://placehold.co/600x400) |
+| *High-performance SQL-based statistics* | *Transient model for lending logic* |
+
+| **OWL Star Rating** | **PDF Report** |
+|:---:|:---:|
+| ![OWL](https://placehold.co/600x400) | ![Report](https://placehold.co/600x400) |
+| *Custom JavaScript Component* | *QWeb PDF Catalogue* |
+
+---
+
+## 🚀 Technical Architecture
+
+This module follows strict **Odoo 18 best practices** and covers the full development spectrum:
+
+### 🔹 1. Core Backend & DB Optimization
+- **Data Modeling:** Complex relations (`One2many`, `Many2one`) with standard naming conventions.
+- **Smart Inheritance:** Extended `res.partner` using `_inherit` to add library member data without breaking the core.
+- **SQL Views:** Bypassed the ORM for the dashboard to solve the **N+1 Query Problem**.
+  - *Tech Stack:* Direct PostgreSQL queries, `tools.drop_view_if_exists`.
+- **Security:** Granular ACLs (CSV) and Row-level security for `Librarians` vs `Users`.
+
+### 🔹 2. Frontend & UX (JavaScript/OWL)
+- **Custom Widget:** Built a reactive **Star Rating** component from scratch.
+- **Framework:** Odoo Web Library (OWL) 2.0.
+- **Integration:** Registered via `registry.category("fields")` and extended `standardFieldProps` (Odoo 18 compliant).
+
+### 🔹 3. Automation & Business Logic
+- **Transient Models:** "Rent Book" wizard for temporary data handling.
+- **Cron Jobs:** Automated daily checks for overdue books (`ir.cron`).
+- **QWeb Reports:** Custom HTML/CSS layouts for generating professional PDF catalogues.
+
+---
+
+## 🔌 API Reference
+
+The module exposes a public REST API for external integrations (Mobile Apps/Websites).
+
+### Get Available Books
+**Endpoint:** `POST /library/books`
+**Auth:** Public (None required for demo)
+
+**Request (JSON-RPC):**
+```json
+{
+    "jsonrpc": "2.0",
+    "method": "call",
+    "params": {}
+}
+```
+**Response:**
+```
+{
+    "status": "success",
+    "total": 5,
+    "data": [
+        {
+            "id": 1,
+            "title": "The Alchemist",
+            "author": "Paulo Coelho",
+            "year": 1988,
+            "isbn": "978-0062315007"
+        }
+    ]
+}
+```
+**📂 Project Structure**
+```
+library_app/
+├── controllers/      # REST API Endpoints
+├── data/             # Cron Jobs & Automated Actions
+├── models/           # Python Backend (SQL Views & Logic)
+├── report/           # QWeb PDF Templates
+├── security/         # Access Rights (ACLs & Groups)
+├── static/           # JS (OWL), CSS, and Images
+├── views/            # XML Views (Form, List, Graph)
+└── wizard/           # Pop-up Logic (Transient Models)
+```
+
+### 🛠️ Installation
+**1. Clone the repository:**
+```
+git clone https://github.com/pitiky0/odoo-library-management.git
+```
+**2. Add to Addons:** Move the `library_app` folder to your Odoo `custom_addons` directory.
+
+**3. Restart Odoo Service:**
+```
+sudo systemctl restart odoo18.service
+```
+**4. Activate:**
+Go to **Apps → Update App List.**
+Search for **"Library Management".**
+Click **Activate.**
+
+### 👨‍💻 Author
+**Ayoub Karret** Odoo Developer
