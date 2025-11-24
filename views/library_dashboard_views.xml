@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_library_statistics_tree" model="ir.ui.view">
+        <field name="name">library.book.statistics.tree</field>
+        <field name="model">library.book.statistics</field>
+        <field name="arch" type="xml">
+            <tree create="false" edit="false" delete="false">
+                <field name="author_id"/>
+                <field name="book_count"/>
+                <field name="average_rating" widget="progressbar"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_library_statistics_graph" model="ir.ui.view">
+        <field name="name">library.book.statistics.graph</field>
+        <field name="model">library.book.statistics</field>
+        <field name="arch" type="xml">
+            <graph string="Library Statistics" type="bar">
+                <field name="author_id"/>
+                <field name="book_count" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="action_library_statistics" model="ir.actions.act_window">
+        <field name="name">Statistics</field>
+        <field name="res_model">library.book.statistics</field>
+        <field name="view_mode">tree,graph</field>
+    </record>
+
+    <menuitem id="menu_library_statistics"
+              name="Reporting"
+              parent="menu_library_root"
+              action="action_library_statistics"
+              sequence="30"/>
+
+</odoo>

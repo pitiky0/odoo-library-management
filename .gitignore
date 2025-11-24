@@ -1,0 +1,10 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Odoo
+.ipynb_checkpoints/
+*.log
+
+# System
+.DS_Store

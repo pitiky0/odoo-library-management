@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="library_app.StarRating">
+        <div class="o_field_widget o_priority">
+            <t t-foreach="[1, 2, 3, 4, 5]" t-as="star" t-key="star">
+                
+                <a href="#" 
+                   class="fa fa-star"
+                   t-att-class="star <= props.record.data[props.name] ? 'text-warning' : 'text-muted'"
+                   t-on-click="() => this.setRating(star)"
+                   aria-label="Rate this book"
+                   title="Rate this book">
+                </a>
+                
+            </t>
+        </div>
+    </t>
+
+</templates>
