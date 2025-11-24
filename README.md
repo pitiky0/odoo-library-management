@@ -54,27 +54,49 @@ The module exposes a public REST API for external integrations (Mobile Apps/Webs
 **Auth:** Public (None required for demo)
 
 **Request (JSON-RPC):**
-```json
-{
-    "jsonrpc": "2.0",
-    "method": "call",
-    "params": {}
-}
+```js
+fetch('/library/books',{
+  method: 'POST',
+  headers: {
+      'content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+      jsonrpc: "2.0",
+      method: "call",
+      params: {}
+  })
+})
+.then(response => response.json())
+.then(data => console.log(data.result));
 ```
 **Response:**
-```
+```json
 {
-    "status": "success",
-    "total": 5,
-    "data": [
-        {
-            "id": 1,
-            "title": "The Alchemist",
-            "author": "Paulo Coelho",
-            "year": 1988,
-            "isbn": "978-0062315007"
-        }
-    ]
+  "status": "success",
+  "total": 3,
+  "data": [
+    {
+      "author": "Paulo Coelho",
+      "id": 7,
+      "isbn": "978-0062315007",
+      "title": "The Alchemist",
+      "year": 1988
+    },
+    {
+      "author": "Ray Bradbury",
+      "id": 9,
+      "isbn": "0-394-54702-0",
+      "title": "Death Is a Lonely Business",
+      "year": 1985
+    },
+    {
+      "author": "Horace Walpole",
+      "id": 11,
+      "isbn": "9788831964067",
+      "title": "The Castle of Otranto",
+      "year": 1764
+    }
+  ]
 }
 ```
 **📂 Project Structure**
